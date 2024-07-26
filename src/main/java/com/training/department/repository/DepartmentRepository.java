@@ -1,26 +1,11 @@
 package com.training.department.repository;
 
-import com.training.department.view.Department;
+import com.training.department.entities.Department;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class DepartmentRepository {
-  private List<Department> departments = new ArrayList<>();
-
-  public Department addDepartment(Department department) {
-    departments.add(department);
-    return department;
-  }
-
-  public Department findById(Long id) {
-    return departments.stream().filter(department -> department.getId() == id).findFirst().orElseThrow();
-  }
-
-  public List<Department> findAll() {
-    return departments;
-  }
+public interface DepartmentRepository extends JpaRepository<Department, Long> {
 }
