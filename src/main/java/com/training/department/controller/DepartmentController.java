@@ -2,6 +2,7 @@ package com.training.department.controller;
 
 import com.training.department.entities.Department;
 import com.training.department.service.DepartmentService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class DepartmentController {
   }
 
   @PostMapping
-  public Department add(@RequestBody Department department) {
+  public Department add(@Valid @RequestBody Department department) {
     LOGGER.info("Deparment added: {}", department);
     return departmentService.save(department);
   };
@@ -35,7 +36,9 @@ public class DepartmentController {
   @GetMapping("/{id}")
   public Department get(@PathVariable Long id) {
     LOGGER.info("Department find api");
-    return departmentService.findDepartmentById(id);
+    Department department = departmentService.findDepartmentById(id);
+    LOGGER.info("Department found: {}", department.toString());
+    return department;
   }
 
   @PatchMapping("/{id}")

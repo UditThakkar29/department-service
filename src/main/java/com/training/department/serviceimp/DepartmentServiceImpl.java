@@ -25,7 +25,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
   @Override
   public List<Department> findAll() {
-    return List.of();
+    return departmentRepository.findAll();
   }
 
   @Override
@@ -37,7 +37,7 @@ public class DepartmentServiceImpl implements DepartmentService {
   }
 
   @Override
-  public Department findDepartmentById(long id) {
+  public Department findDepartmentById(Long id) {
     System.out.println("Inside findById method");
     Department department = departmentRepository.findById(id).get();
     if (department == null) {

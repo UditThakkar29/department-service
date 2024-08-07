@@ -12,7 +12,7 @@ public interface DepartmentService {
 
   Department save(Department department);
 
-  Department findDepartmentById(long id);
+  Department findDepartmentById(Long id);
 
   Department updateDepartment(long id, Department department);
 }
